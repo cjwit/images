@@ -5,3 +5,5 @@
         <li><strong><%= image.title %></strong> <small>created on <%= image.created_at.to_s(:long) %></small></li>
     <% end %>
 </ul>
+
+<%= link_to "Add a new image", new_image_path %>
