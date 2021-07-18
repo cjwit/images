@@ -2,8 +2,7 @@
 
 <%= form_with model: @image, local: true do |form| %>
     <div>
-        <%= form.label :title %><br>
-        <%= form.text_field :title %>
+        <%= form.text_field :title, placeholder: "Title or short caption" %>
     </div>
 
     <div>
@@ -13,6 +12,14 @@
     <div>
         <%= form.submit %>
     </div>
+<% end %>
+
+<% if @image.errors.any? %>
+    <ul>
+        <% @image.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ul>
 <% end %>
 
 <p><%= link_to "Cancel", root_path %></p>
