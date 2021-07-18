@@ -1,8 +1,7 @@
-<h1>Uploaded images</h1>
-
-<p><%= link_to "Add a new image", new_image_path %></p>
-
 <div class='gallery'>
+    <div class="gallery-item upload-link" style="background: rgb(194, 37, 37);">
+        <div><%= link_to "Upload a new image", new_image_path %></div>
+    </div>
     <% @images.each do |image| %>
         <% if image.imageFile.attached? %>
         
