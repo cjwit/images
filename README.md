@@ -6,9 +6,13 @@ Images are stored using Active Storage. Locally, they are configured using Postg
 
 ## To do
 
+
+* Do some basic styling to the pages
+    * change opacity on hover over parent div
+    * make add button into a grid block
+* Process images for thumbnails
 * Set up file type validation
 * Set up testing and CI
-* Do some basic styling to the pages
 * Configure Active Storage for production
 * Check setup with a fresh version and describe the process (clone, install dependencies, create databases, run webpack if necessary, and start with the server)
 * Document features
