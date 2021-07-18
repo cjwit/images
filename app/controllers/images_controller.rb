@@ -8,7 +8,9 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @image = Image.new(image_params)
+    @image = Image.create!(image_params)
+    @image.imageFile.attach(params[:image][:imageFile])
+
     if @image.save
       redirect_to '/'
     else
@@ -18,6 +20,6 @@ class ImagesController < ApplicationController
 
   private
     def image_params
-      params.require(:image).permit(:title, :file)
+      params.require(:image).permit(:title, :imageFile)
     end
 end

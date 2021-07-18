@@ -2,7 +2,16 @@
 
 <ul>
     <% @images.each do |image| %>
-        <li><strong><%= image.title %></strong> <small>created on <%= image.created_at.to_s(:long) %></small></li>
+        <li>
+            <strong><%= image.title %>, <%= image.id %></strong> &nbsp;
+            <small>created on <%= image.created_at.to_s(:long) %></small>&nbsp;
+            <%= image.imageFile %>
+        </li>
+        <% if image.imageFile.attached? %>
+            <p><%= image_tag image.imageFile %></p>
+        <% else %>
+            <p>No image</p>
+        <% end %>
     <% end %>
 </ul>
 

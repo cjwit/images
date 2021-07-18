@@ -1,9 +1,13 @@
 <h1>Add an image</h1>
 
-<%= form_with model: @image do |form| %>
+<%= form_with model: @image, local: true do |form| %>
     <div>
         <%= form.label :title %><br>
         <%= form.text_field :title %>
+    </div>
+
+    <div>
+        <%= form.file_field :imageFile %>
     </div>
 
     <div>
