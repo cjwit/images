@@ -16,7 +16,7 @@
 
 <% if @image.errors.any? %>
     <ul>
-        <% @image.errors.full_messages.each do |msg| %>
+        <% @image.errors.each do |attr, msg| %>
             <li><%= msg %></li>
         <% end %>
     </ul>

@@ -31,3 +31,18 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      image:
+        imageFile: "image file"
+        title: "short title or caption"
+    errors:
+      models:
+        image:
+          attributes:
+            imageFile:
+              blank: "Be sure to include an image file to upload!"
+            title:
+              blank: "A short title or caption is required (3-50 characters)."
+              too_short: "A short title or caption is required (3-50 characters)."
+              too_long: "A short title or caption is required (3-50 characters)."
