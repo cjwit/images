@@ -1,18 +1,14 @@
 <h1>Uploaded images</h1>
 
-<ul>
-    <% @images.each do |image| %>
-        <li>
-            <strong><%= image.title %>, <%= image.id %></strong> &nbsp;
-            <small>created on <%= image.created_at.to_s(:long) %></small>&nbsp;
-            <%= image.imageFile %>
-        </li>
-        <% if image.imageFile.attached? %>
-            <p><%= image_tag image.imageFile %></p>
-        <% else %>
-            <p>No image</p>
-        <% end %>
-    <% end %>
-</ul>
+<p><%= link_to "Add a new image", new_image_path %></p>
 
-<%= link_to "Add a new image", new_image_path %>
+<% @images.each do |image| %>
+    <p>
+        <strong><%= image.title %>, <%= image.id %></strong> &nbsp;
+        <small>created on <%= image.created_at.to_s(:long) %></small>
+    </p>
+    <% if image.imageFile.attached? %>
+        <p><%= image_tag image.imageFile %></p>
+        <% else %><p>No image</p>
+    <% end %>
+<% end %>
