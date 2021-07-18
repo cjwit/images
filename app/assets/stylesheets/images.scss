@@ -1,3 +1,47 @@
 // Place all the styles related to the Images controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-rows: repeat(6, 240px);
+    grid-gap: 1rem;
+    grid-auto-flow: dense;
+}
+
+.gallery-item {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.gallery > .gallery-item:nth-child(4n) {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.gallery > .gallery-item:nth-child(8n) {
+    grid-column: span 3;
+    grid-row: span 3;
+}
+
+.gallery > .gallery-item > div {
+    background: rgba(0, 0, 0, 0.1);
+    -webkit-transition: background .5s ease-out;
+    -moz-transition: background .5s ease-out;
+    -o-transition: background .5s ease-out;
+    transition: background .5s ease-out;
+  
+    &:hover {
+        background: rgba(0, 0, 0, 0.3);
+    }
+}
+
+.gallery > .gallery-item > div > a {
+    font-weight: 700;
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}

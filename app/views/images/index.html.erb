@@ -2,13 +2,14 @@
 
 <p><%= link_to "Add a new image", new_image_path %></p>
 
-<% @images.each do |image| %>
-    <p>
-        <strong><%= image.title %>, <%= image.id %></strong> &nbsp;
-        <small>created on <%= image.created_at.to_s(:long) %></small>
-    </p>
-    <% if image.imageFile.attached? %>
-        <p><%= link_to image_tag(image.imageFile), url_for(image.imageFile) %></p>
-        <% else %><p>No image</p>
+<div class='gallery'>
+    <% @images.each do |image| %>
+        <% if image.imageFile.attached? %>
+        
+        <div class="gallery-item" style="background-image: url(<%= url_for(image.imageFile)%>);">
+            <div><%= link_to image.title, url_for(image.imageFile) %></div>
+        </div>
+        
+        <% end %>
     <% end %>
-<% end %>
+</div>
