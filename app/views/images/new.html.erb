@@ -6,7 +6,7 @@
     </div>
 
     <div>
-        <%= form.file_field :imageFile, direct_upload: true, accept: 'image/jpeg' %>
+        <%= form.file_field :imageFile, direct_upload: true, accept: 'image/jpeg,image/png,image/gif' %>
     </div>
 
     <div>
@@ -16,8 +16,8 @@
 
 <% if @image.errors.any? %>
     <ul>
-        <% @image.errors.each do |attr, msg| %>
-            <li><%= msg %></li>
+        <% @image.errors.each do |error| %>
+            <li><%= error.message %></li>
         <% end %>
     </ul>
 <% end %>
