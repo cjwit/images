@@ -1,2 +1,7 @@
-<h1>Images#index</h1>
-<p>Landing page to show all uploaded images</p>
+<h1>Uploaded images</h1>
+
+<ul>
+    <% @images.each do |image| %>
+        <li><strong><%= image.title %></strong> <small>created on <%= image.created_at.to_s(:long) %></small></li>
+    <% end %>
+</ul>

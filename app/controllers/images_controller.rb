@@ -10,7 +10,7 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(image_params)
     if @image.save
-      redirect_to root
+      redirect_to '/'
     else
       render :new
     end
