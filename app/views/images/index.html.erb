@@ -5,8 +5,10 @@
     <% @images.each do |image| %>
         <% if image.imageFile.attached? %>
         
-        <div class="gallery-item" style="background-image: url('<%=url_for(image.imageFile.variant(resize_to_limit: [1000, 1000]))%>');">
-            <div><%= link_to image.title, url_for(image.imageFile) %></div>
+        <div class="gallery-item" 
+             style="background-image: url('<%=url_for(image.imageFile.variant(resize_to_limit: [1000, 1000]))%>');"
+             onclick="location.href='<%= url_for(image.imageFile) %>'">
+                <div class="caption"><%= link_to image.title, url_for(image.imageFile) %></div>
         </div>
         
         <% end %>

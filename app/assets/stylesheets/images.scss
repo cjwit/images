@@ -15,6 +15,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    cursor: pointer;
 }
 
 @media only screen and (min-width: 800px) {
@@ -31,26 +32,26 @@
     }
 }
 
-.gallery > .gallery-item > div {
-    background: rgba(0, 0, 0, 0.1);
-    -webkit-transition: background .5s ease-out;
-    -moz-transition: background .5s ease-out;
-    -o-transition: background .5s ease-out;
-    transition: background .5s ease-out;
-  
-    &:hover {
-        background: rgba(0, 0, 0, 0.3);
+.upload-link {
+    background-color: $go-color;
+}
+
+.caption {
+    background: rgba(0, 0, 0, 0.3);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.2s linear;
+
+    & > a {
+        font-weight: 700;
+        display: block;
+        text-decoration: none;
+        color: white;
+        padding: 10px;
     }
 }
 
-.gallery > .gallery-item > div > a {
-    font-weight: 700;
-    display: block;
-    text-decoration: none;
-    color: white;
-    padding: 10px;
-}
-
-.upload-link {
-    background-color: $go-color
+.gallery-item:hover .caption {
+    visibility: visible;  
+    opacity: 1;
 }
