@@ -36,4 +36,9 @@ class ImageTest < ActiveSupport::TestCase
     imageWithLongTitle = Image.new({ title: titleWith51, imageFile: testFile })
     assert_not imageWithLongTitle.save
   end
+
+  test "shoudl not save without attached image" do
+    imageRecord = Image.new({ title: 'title' })
+    assert_not imageRecord.save
+  end
 end
