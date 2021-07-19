@@ -10,7 +10,8 @@
     </div>
 
     <div>
-        <%= form.submit %>
+        <%= form.submit "Add image", class: "button add-button" %>
+        <%= link_to "<button class='button cancel-button'>Cancel</button>".html_safe, root_path %>
     </div>
 <% end %>
 
@@ -21,5 +22,3 @@
         <% end %>
     </ul>
 <% end %>
-
-<p><%= link_to "Cancel", root_path %></p>

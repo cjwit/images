@@ -1,6 +1,7 @@
 // Place all the styles related to the Images controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import 'variables.scss';
 
 .gallery {
     display: grid;
@@ -48,4 +49,8 @@
     text-decoration: none;
     color: white;
     padding: 10px;
+}
+
+.upload-link {
+    background-color: $go-color
 }
