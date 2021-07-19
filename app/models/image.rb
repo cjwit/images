@@ -8,7 +8,7 @@ class Image < ApplicationRecord
     private
     def correct_document_mime_type
         if imageFile.attached? && !imageFile.content_type.in?(ACCEPTED_FORMATS)
-            errors.add(:imageFile, "Only JPEG, PNG, GIF, and HIEC/HIEF files are accepted.")
+            errors.add(:imageFile, "Only JPEG, PNG, and GIF files are accepted.")
         end
     end
 end
