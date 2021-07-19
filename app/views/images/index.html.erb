@@ -1,6 +1,6 @@
 <div class='gallery'>
-    <div class="gallery-item upload-link">
-        <div><%= link_to "Upload a new image", new_image_path %></div>
+    <div class="gallery-item upload-link" onclick="location.href='<%= new_image_path %>'">
+        <div class="caption"><%= link_to "Upload a new image", new_image_path %></div>
     </div>
     <% @images.each do |image| %>
         <% if image.imageFile.attached? %>

@@ -12,7 +12,6 @@ Images are stored using Active Storage. Locally, they are configured using Postg
 
 ## To do
 
-* Change opacity on hover over parent div
 * Set up testing and CI
 * Configure Active Storage for production
 * Check setup with a fresh version and describe the process (clone, install dependencies, create databases, run webpack if necessary, and start with the server)

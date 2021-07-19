@@ -34,6 +34,10 @@
 
 .upload-link {
     background-color: $go-color;
+    .caption {
+        visibility: visible;
+        opacity: 1;
+    }
 }
 
 .caption {
