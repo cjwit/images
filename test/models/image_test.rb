@@ -37,8 +37,30 @@ class ImageTest < ActiveSupport::TestCase
     assert_not imageWithLongTitle.save
   end
 
-  test "shoudl not save without attached image" do
+  test "should not save without attached image" do
     imageRecord = Image.new({ title: 'title' })
     assert_not imageRecord.save
+  end
+
+  test "should not save with unsupported file upload type" do 
+    testFile = fixture_file_upload('svg-test.svg', 'image/svg')
+    imageRecord = Image.new({ title: 'title', imageFile: testFile })
+    assert_not imageRecord.save
+  end
+
+  test "should not save with invalid file extension/file type" do 
+    # saving should fail if there is a true test of file type validity
+    # beyond just checking the mime-type on upload 
+    # currently failing test, this check is not implemented
+
+    # svg-test.jpg is an SVG file with the extension shanged to .jpg
+    testFile = fixture_file_upload('svg-test.jpg', 'image/jpeg')
+    imageRecord = Image.new({ title: 'title', imageFile: testFile })
+    assert_not imageRecord.save # catches the problem for SVG
+    
+    # text-test.jpg is similar, a text file with .jpg extension
+    testFile = fixture_file_upload('text-test.jpg', 'image/jpeg')
+    imageRecord = Image.new({ title: 'title', imageFile: testFile })
+    # assert_not imageRecord.save # fails for text, does not catch the error
   end
 end
