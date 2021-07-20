@@ -61,6 +61,6 @@ class ImageTest < ActiveSupport::TestCase
     # text-test.jpg is similar, a text file with .jpg extension
     testFile = fixture_file_upload('text-test.jpg', 'image/jpeg')
     imageRecord = Image.new({ title: 'title', imageFile: testFile })
-    # assert_not imageRecord.save # fails for text, does not catch the error
+    flunk imageRecord.save # fails for text, does not catch the error
   end
 end
