@@ -18,6 +18,6 @@ Images are stored using Active Storage. Locally, they are configured using Postg
 
 ## To do
 
-* Configure Active Storage for production
+* Configure Active Storage for production (started the process of setting up S3, but ran into errors that I haven't been able to identify yet)
 * Check setup with a fresh version and describe the process (clone, install dependencies, create databases, run webpack if necessary, and start with the server)
 * Document features
