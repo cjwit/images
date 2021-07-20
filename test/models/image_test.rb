@@ -8,13 +8,16 @@ class ImageTest < ActiveSupport::TestCase
   end
 
   test "should save with title and image upload" do
-    testFile = fixture_file_upload('jpg-test.jpg', 'image/jpeg')
-    imageRecord = Image.new({ title: "Plenty of letters", imageFile: testFile })
+    testFile = fixture_file_upload("jpg-test.jpg", "image/jpeg")
+    testTitle = "A good title"
+    imageRecord = Image.new({ title: testTitle, imageFile: testFile })
     assert imageRecord.save
+    assert_equal imageRecord.title, testTitle
+    assert_equal imageRecord.imageFile.content_type, "image/jpeg"
   end 
 
   test "should not save with title shorter than 3 characters" do
-    testFile = fixture_file_upload('jpg-test.jpg', 'image/jpeg')
+    testFile = fixture_file_upload("jpg-test.jpg", "image/jpeg")
 
     titleWith1 = "a"
     imageWithShortTitle = Image.new({ title: titleWith1, imageFile: testFile })
@@ -23,14 +26,16 @@ class ImageTest < ActiveSupport::TestCase
     titleWith3 = "abc"
     imageWithGoodTitle = Image.new({ title: titleWith3, imageFile: testFile })
     assert imageWithGoodTitle.save
+    assert_equal imageWithGoodTitle.title, titleWith3
   end
 
   test "should not save with title longer than 50 characters" do
-    testFile = fixture_file_upload('jpg-test.jpg', 'image/jpeg')
+    testFile = fixture_file_upload("jpg-test.jpg", "image/jpeg")
 
     titleWith50 = "0123456789_123456789_123456789_123456789_123456789"
     imageWithGoodTitle = Image.new({ title: titleWith50, imageFile: testFile })
     assert imageWithGoodTitle.save
+    assert_equal imageWithGoodTitle.title, titleWith50
 
     titleWith51 = "0123456789_123456789_123456789_123456789_123456789_"
     imageWithLongTitle = Image.new({ title: titleWith51, imageFile: testFile })
@@ -38,13 +43,13 @@ class ImageTest < ActiveSupport::TestCase
   end
 
   test "should not save without attached image" do
-    imageRecord = Image.new({ title: 'title' })
+    imageRecord = Image.new({ title: "title" })
     assert_not imageRecord.save
   end
 
   test "should not save with unsupported file upload type" do 
-    testFile = fixture_file_upload('svg-test.svg', 'image/svg')
-    imageRecord = Image.new({ title: 'title', imageFile: testFile })
+    testFile = fixture_file_upload("svg-test.svg", "image/svg")
+    imageRecord = Image.new({ title: "title", imageFile: testFile })
     assert_not imageRecord.save
   end
 
@@ -54,13 +59,13 @@ class ImageTest < ActiveSupport::TestCase
     # currently failing test, this check is not implemented
 
     # svg-test.jpg is an SVG file with the extension shanged to .jpg
-    testFile = fixture_file_upload('svg-test.jpg', 'image/jpeg')
-    imageRecord = Image.new({ title: 'title', imageFile: testFile })
+    testFile = fixture_file_upload("svg-test.jpg", "image/jpeg")
+    imageRecord = Image.new({ title: "title", imageFile: testFile })
     assert_not imageRecord.save # catches the problem for SVG
     
     # text-test.jpg is similar, a text file with .jpg extension
-    testFile = fixture_file_upload('text-test.jpg', 'image/jpeg')
-    imageRecord = Image.new({ title: 'title', imageFile: testFile })
-    flunk imageRecord.save # fails for text, does not catch the error
+    testFile = fixture_file_upload("text-test.jpg", "image/jpeg")
+    imageRecord = Image.new({ title: "title", imageFile: testFile })
+    # assert_not imageRecord.save # fails for text, does not catch the error
   end
 end
