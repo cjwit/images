@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/cjwit/images.svg?branch=main)](https://travis-ci.com/cjwit/images)
+
 # Image upload
 
 The working application is available at <https://witulski-vtaku.herokuapp.com>.
